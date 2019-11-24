@@ -122,4 +122,6 @@ function cl {
 function cla {
 	cd "$@" && ls -a
 }
-
+function cll {
+	cd "$@" && ls -l
+}

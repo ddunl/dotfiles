@@ -11,4 +11,9 @@ cp vim/.vimrc ~/.vimrc
 #TODO: need to setup other bash conf files
 echo "Moving bash dotfiles..."
 cp bash/.bashrc ~/.bashrc
+
+#make files update
+echo "Sourcing files..."
+source ~/.bashrc
+
  
