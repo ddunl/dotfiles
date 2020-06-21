@@ -71,6 +71,23 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+setup_tmux () {
+	session_name="base"
+	tmux start-server
+	tmux new-session -d -s $session_name
+	tmux selectp -t 1
+	tmux rename-window -t 0 sys
+	tmux new-window -t $session_name:1 -n 'prog'
+	tmux send-keys -t 'prog'  'cd code' C-m
+	tmux new-window -t $session_name:2 -n 'web-server'
+	tmux send-keys -t 'web-server' 'npx http-server'
+	tmux selectw -t 1
+	tmux a
+}
+#start tmux when terminal is opened
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+   tmux a || setup_tmux
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -91,7 +108,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
+alias cdd='cd $(ls -d */ | dmenu)'
+alias rs='java -jar /usr/local/bin/RuneLite.jar'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -125,3 +143,5 @@ function cla {
 function cll {
 	cd "$@" && ls -l
 }
+
+export TERM=xterm-256color
