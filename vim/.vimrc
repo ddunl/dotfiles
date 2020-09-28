@@ -1,4 +1,12 @@
 set encoding=utf-8
+
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+call plug#end()
+
+
 "gruvbox theme
 syntax on
 set background=dark
@@ -18,7 +26,10 @@ let g:terminal_ansi_colors = [
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_bold=1
 
+let g:vimspector_enable_mappings = 'HUMAN'
+
 colorscheme gruvbox
+
 
 let mapleader=" "
 
@@ -35,6 +46,7 @@ set noshowmode
 " tabs stuff
 set sw=4
 set tabstop=4
+set softtabstop=0
 set autoindent
 set smartindent
 set noexpandtab
@@ -44,17 +56,18 @@ set wildmenu
 "tab and space chars
 set list
 set listchars=eol:¬,tab:▸-
-" no arrows!!
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
+
+set cc=80
 
 "ignore macro recording for now
 nnoremap q <nop> 
 
 "reload vimrc
 nnoremap <Leader>rel :source $MYVIMRC<CR>
+
+
+vnoremap > >gv "reselect after indenting
+vnoremap < <gv
 
 "autocomplete brackets - still looking for more sublime-eqsue to beat this
 inoremap {<CR> {<CR>}<Esc>O
@@ -84,23 +97,23 @@ function! Flt_term_win(cmd, width, height, border_highlight, title) abort
     return winid
 endfunction
 
-"commands for open popup shell and run python in interactive mode	
+"commands for open popup shell and run python in interactive mode
 nnoremap <buffer> <leader>sh :call Flt_term_win('bash', 0.9, 0.6, 'Todo', ' bash')<CR>
 nnoremap <buffer> <leader>b :call Flt_term_win('python3 -i '.expand('%:p'), 0.9, 0.9, 'Todo'," " . expand('%'))<CR>
 "compile tex on save
 autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
+
+"open nerdtree if no file is opened with vim
+autocmd VimEnter * if !argc() | NERDTree | endif
+
 "commands for switching windows
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-"netrw settings
-let g:netrw_browse_split = 2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>n :NERDTree<CR>
 
-"open netrw in good split
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
 
