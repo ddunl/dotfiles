@@ -4,16 +4,16 @@
 
 #vim
 echo "Moving vim dotfiles..."
-cp ~/vim/.vimrc ~/.vimrc
+cp ~/dotfiles/vim/.vimrc ~/.vimrc
 
 
 #bash
 echo "Moving bash dotfiles..."
-cp ~/bash/.bashrc ~/.bashrc
+cp ~/dotfiles/bash/.bashrc ~/.bashrc
 
 #tmux
 echo "Moving tmux dotfiles..."
-cp ~/tmux/.tmux.conf ~/.tmux.conf
+cp ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 #make files update
 echo "Sourcing files..."
 source ~/.bashrc
