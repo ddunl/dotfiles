@@ -4,13 +4,15 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 
 "gruvbox theme
 syntax on
 set background=dark
-"this fixes tmux colors somehow lol
+"hhis fixes tmux colors somehow lol
 if exists('+termguicolors')
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -46,9 +48,6 @@ set noshowmode
 " tabs stuff
 set sw=4
 set tabstop=4
-set softtabstop=0
-set autoindent
-set smartindent
 set noexpandtab
 "weird fuzzyfinder probably worse than fzf though
 set path+=**
@@ -65,41 +64,41 @@ nnoremap q <nop>
 "reload vimrc
 nnoremap <Leader>rel :source $MYVIMRC<CR>
 
-
-vnoremap > >gv "reselect after indenting
+"reselect after indenting
+vnoremap > >gv 
 vnoremap < <gv
 
 "autocomplete brackets - still looking for more sublime-eqsue to beat this
 inoremap {<CR> {<CR>}<Esc>O
 
 function! Flt_term_win(cmd, width, height, border_highlight, title) abort
-    let width = float2nr(&columns * a:width)
-    let height = float2nr(&lines * a:height)
-    let bufnr = term_start(a:cmd, {'hidden': 1, 'term_finish': 'close', 'cwd': getcwd()})
+	let width = float2nr(&columns * a:width)
+	let height = float2nr(&lines * a:height)
+	let bufnr = term_start(a:cmd, {'hidden': 1, 'term_finish': 'close', 'cwd': getcwd()})
 
-    let winid = popup_create(bufnr, {
-            \ 'minwidth': width,
-            \ 'maxwidth': width,
-            \ 'minheight': height,
-            \ 'maxheight': height,
-            \ 'border': [],
-            \ 'borderchars': ['─', '│', '─', '│', '┌', '┐', '┘', '└'],
-            \ 'borderhighlight': [a:border_highlight],
-            \ 'padding': [0,1,0,1],
-            \ 'highlight': a:border_highlight,
+	let winid = popup_create(bufnr, {
+			\ 'minwidth': width,
+			\ 'maxwidth': width,
+			\ 'minheight': height,
+			\ 'maxheight': height,
+			\ 'border': [],
+			\ 'borderchars': ['─', '│', '─', '│', '┌', '┐', '┘', '└'],
+			\ 'borderhighlight': [a:border_highlight],
+			\ 'padding': [0,1,0,1],
+			\ 'highlight': a:border_highlight,
 			\ 'title': a:title
-            \ })
+			\ })
 
-    " Optionally set the 'Normal' color for the terminal buffer
-   	" call setwinvar(winid, '&wincolor', 'Special')
+	" Optionally set the 'Normal' color for the terminal buffer
+	" call setwinvar(winid, '&wincolor', 'Special')
 	let b:termid = winid
 	echo b:termid
-    return winid
+	return winid
 endfunction
 
 "commands for open popup shell and run python in interactive mode
-nnoremap <buffer> <leader>sh :call Flt_term_win('bash', 0.9, 0.6, 'Todo', ' bash')<CR>
-nnoremap <buffer> <leader>b :call Flt_term_win('python3 -i '.expand('%:p'), 0.9, 0.9, 'Todo'," " . expand('%'))<CR>
+nnoremap <leader>sh :call Flt_term_win('bash', 0.9, 0.6, 'Todo', ' bash')<CR>
+autocmd filetype python nnoremap <buffer> <leader>b :call Flt_term_win('python3 -i '.expand('%:p'), 0.9, 0.9, 'Todo'," " . expand('%'))<CR>
 "compile tex on save
 autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
 
@@ -112,8 +111,14 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+nnoremap <Up>    :resize -2<CR>
+nnoremap <Down>  :resize +2<CR>
+nnoremap <Left>  :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>n :NERDTree<CR>
 
+nnoremap <leader>o :call system("nohup nautilus . > /dev/null 2>&1 &") <CR>
 
 
