@@ -74,14 +74,6 @@ esac
 setup_tmux () {
 	session_name="base"
 	tmux start-server
-	tmux new-session -d -s $session_name
-	tmux selectp -t 1
-	tmux rename-window -t 0 sys
-	tmux new-window -t $session_name:1 -n 'prog'
-	tmux send-keys -t 'prog'  'cd code' C-m
-	tmux new-window -t $session_name:2 -n 'web-server'
-	tmux send-keys -t 'web-server' 'npx http-server'
-	tmux selectw -t 1
 	tmux a
 }
 #start tmux when terminal is opened

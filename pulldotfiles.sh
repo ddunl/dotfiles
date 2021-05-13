@@ -4,8 +4,7 @@
 
 #vim
 echo "Retrieving vim dotfiles..."
-cp ~/.vimrc ~/dotfiles/vim/.vimrc 
-
+cp ~/.config/nvim/init.vim ~/dotfiles/nvim/init.vim
 
 #bash
 echo "Retrieving bash dotfiles..."
