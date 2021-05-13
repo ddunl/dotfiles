@@ -1,0 +1,3 @@
+~/.config/nvim/init.vim ./nvim/init.vim
+~/.bashrc ./bash/.bashrc 
+~/.tmux.conf ./tmux/.tmux.conf 

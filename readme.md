@@ -1,4 +1,4 @@
 # Dotfiles
 
-This is my dotfiles repo. Use pushdotfiles.sh to install in correct location.
+Use make push to copy dotfiles from repo to correct location, make pull for the opposite
 
