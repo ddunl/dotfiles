@@ -103,7 +103,7 @@ endfunction
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 
-nnoremap <leader>test :call RipgrepFzf("test", 0)<CR>
+nnoremap <leader>rg :call RipgrepFzf("rg", 0)<CR>
 
 "commands for open popup shell and run python in interactive mode
 nnoremap <leader>sh :FloatermNew<CR>
