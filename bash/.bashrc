@@ -71,15 +71,6 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-setup_tmux () {
-	session_name="base"
-	tmux start-server
-	tmux a
-}
-#start tmux when terminal is opened
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-   tmux a || setup_tmux
-fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -139,8 +130,8 @@ function cll {
 }
 
 export TERM=xterm-256color
-export VISUAL=vim
-export EDITOR=vim
-export GIT_EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
+export GIT_EDITOR=nvim
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
