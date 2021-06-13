@@ -2,7 +2,9 @@
 ~/.bashrc ./bash/.bashrc
 ~/.tmux.conf ./tmux/.tmux.conf
 ~/.config/polybar/config ./polybar/config
+~/.config/polybar/launch.sh ./polybar/launch.sh
 ~/.config/background.jpg ./background.jpg
 ~/.xinitrc ./x/.xinitrc
 ~/.fehbg ./feh/.fehbg
 ~/.config/dwm/autostart.sh ./dwm/autostart.sh
+
