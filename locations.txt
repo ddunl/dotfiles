@@ -3,3 +3,4 @@
 ~/.tmux.conf ./tmux/.tmux.conf
 ~/.config/polybar/config ./polybar/config
 ~/.config/background.jpg ./background.jpg
+~/.xinitrc ./x/.xinitrc
