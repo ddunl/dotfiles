@@ -4,3 +4,5 @@
 ~/.config/polybar/config ./polybar/config
 ~/.config/background.jpg ./background.jpg
 ~/.xinitrc ./x/.xinitrc
+~/.fehbg ./feh/fehbg
+~/.config/dwm/autostart.sh ./dwm/autostart.sh
