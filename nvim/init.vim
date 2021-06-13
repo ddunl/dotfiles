@@ -23,6 +23,8 @@ call plug#begin()
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/nvim-compe'
 
+	Plug 'nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'}
+
 	Plug 'ap/vim-css-color'
 call plug#end()
 
@@ -132,7 +134,7 @@ nnoremap <Left>  :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 
 nnoremap <leader>f :Files<CR>
-nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>g :Git 
 
 nnoremap ciq ci"
@@ -215,4 +217,12 @@ nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
 
