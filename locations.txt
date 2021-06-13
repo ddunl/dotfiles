@@ -2,3 +2,4 @@
 ~/.bashrc ./bash/.bashrc
 ~/.tmux.conf ./tmux/.tmux.conf
 ~/.config/polybar/config ./polybar/config
+~/.config/background.jpg ./background.jpg
