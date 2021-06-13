@@ -98,6 +98,8 @@ alias rs='java -jar /usr/local/bin/RuneLite.jar'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias gnome_restart=$'busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s \'Meta.restart("Restarting…")\''
+alias bye='i3lock -i ~/.config/background.jpg --radius 1 --verif-text .'
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
