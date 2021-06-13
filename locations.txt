@@ -7,4 +7,3 @@
 ~/.xinitrc ./x/.xinitrc
 ~/.fehbg ./feh/.fehbg
 ~/.config/dwm/autostart.sh ./dwm/autostart.sh
-

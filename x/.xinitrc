@@ -1,3 +1,3 @@
 exec picom &
 ~/.fehbg &
-exec dwm 
+exec dwm
