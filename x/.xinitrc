@@ -1,3 +1,3 @@
 exec picom &
-~/.fehbg &
+autorandr --change && ~/.fehbg
 exec dwm

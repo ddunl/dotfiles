@@ -2,14 +2,12 @@
 
 # Terminate already running bar instances
 killall -q polybar
-
 # Launch bar1 and bar2
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload example &
-  done
-else
-  polybar --reload example &
+
+if [ $HOSTNAME = "stone" ]; then
+	MONITOR=DP-0 polybar --reload main &
+	MONITOR=HDMI-0 polybar --reload alt &
 fi
+
 
 echo "Bars launched..."
