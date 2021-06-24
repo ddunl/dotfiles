@@ -33,7 +33,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -51,13 +51,12 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = Misc Tamsyn:pixelsize=14;2
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-1 = JetBrains Mono NL:size=12;2
 font-2 = siji:pixelsize=10;1
 
 modules-left = dwm
-modules-center = 
-modules-right = spotify xbacklight pulseaudio memory cpu date powermenu
-
+modules-center =  date
+modules-right = spotify xbacklight pulseaudio memory cpu powermenu
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -65,7 +64,7 @@ cursor-scroll = ns-resize
 monitor = ${env:MONITOR}
 inherit = bar/base
 tray-position = right
-tray-padding = 3
+tray-padding = 5
 
 [bar/alt]
 monitor = ${env:MONITOR}
@@ -195,7 +194,7 @@ interval = 1
 format-prefix = ""
 format = <label>
 exec = ~/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song} - {album}'
-format-underline = S{colors.spotify}
+format-underline = ${colors.spotify}
 click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
  
 
@@ -266,16 +265,14 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date =  "%a %h %d"
 
-time = %I:%M
-time-alt = %I:%M:%S
+time = "%I:%M"
 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = %date% %time%
+label = "%date% %time% "
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -284,7 +281,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = muted
+label-muted = "muted"
 label-muted-foreground = #666
 
 bar-volume-width = 8
@@ -346,11 +343,12 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = " • "
-label-open-foreground = ${colors.primary}
+label-open = " ⏻ "
+label-open-font = 1
+label-open-foreground = ${colors.foreground}
 label-close = "x"
-label-close-foreground = ${colors.primary}
-label-separator = |
+label-close-foreground = ${colors.alert}
+label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
