@@ -11,13 +11,14 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-commentary'
 
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'	
+	Plug 'nvim-lua/popup.nvim'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
 
 	Plug 'itchyny/lightline.vim'
 	Plug 'morhetz/gruvbox'
-
-	Plug 'voldikss/vim-floaterm'
+	
+	Plug 'caenrique/nvim-toggle-terminal'
 	Plug 'unblevable/quick-scope'
 
 	Plug 'neovim/nvim-lspconfig'
@@ -90,27 +91,17 @@ nnoremap <Leader>rel :source $MYVIMRC<CR>
 vnoremap > >gv 
 vnoremap < <gv
 
-"autocomplete brackets - still looking for more sublime-eqsue to beat this
 inoremap {<CR> {<CR>}<Esc>O
 
-"taken from blacksuan19 on github
-function! RipgrepFzf(query, fullscreen)
-	let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-	let initial_command = printf(command_fmt, shellescape(a:query))
-	let reload_command = printf(command_fmt, '{q}')
-	let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-	call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-
-nnoremap <leader>rg :call RipgrepFzf("rg", 0)<CR>
-
-"commands for open popup shell and run python in interactive mode
-nnoremap <leader>sh :FloatermNew<CR>
-nnoremap <leader>c :FloatermNew ./build.sh <CR>
-autocmd filetype python nnoremap <buffer> <leader>b :FloatermNew python3 -i %<CR>
+"commands for toggle terminal
+nnoremap <silent> <C-z> :ToggleTerminal<Enter>
+nnoremap <silent> <leader>sh :ToggleTerminal<Enter>
+tnoremap <silent> <C-z> <C-\><C-n>:ToggleTerminal<Enter>
 
 "compile tex on save
 autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
@@ -136,6 +127,7 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>g :Git 
+nnoremap <leader>m :make
 
 nnoremap ciq ci"
 nnoremap diq di"
