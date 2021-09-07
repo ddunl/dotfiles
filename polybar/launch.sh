@@ -10,4 +10,9 @@ if [ $HOSTNAME = "stone" ]; then
 fi
 
 
+if [ $HOSTNAME = "puzzle" ]; then
+	MONITOR=eDP1 polybar --reload main &
+fi
+
+
 echo "Bars launched..."
