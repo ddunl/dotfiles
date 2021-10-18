@@ -56,7 +56,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = dwm
 modules-center =  date
-modules-right = spotify xbacklight pulseaudio memory cpu powermenu
+modules-right = spotify xbacklight pulseaudio memory cpu wlan powermenu
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -225,7 +225,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp7s0f3u1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -251,7 +251,6 @@ interface = enp4s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -277,14 +276,17 @@ label = "%date% %time% "
 [module/pulseaudio]
 type = internal/pulseaudio
 
+click-right = pavucontrol
+
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = "muted"
-label-muted-foreground = #666
 
-bar-volume-width = 8
+format-muted = <label-muted>
+label-muted = "muted"
+
+bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
