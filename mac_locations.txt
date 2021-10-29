@@ -1,2 +1,3 @@
 ~/.config/nvim/init.vim				nvim/init.vim
+~/.config/nvim/lua/init.lua			nvim/lua/init.lua
 ~/.tmux.conf						tmux/.tmux.conf
