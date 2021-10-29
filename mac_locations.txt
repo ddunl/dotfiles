@@ -1,0 +1,2 @@
+~/.config/nvim/init.vim				nvim/init.vim
+~/.tmux.conf						tmux/.tmux.conf
