@@ -20,22 +20,26 @@ cmp.setup({
         { name = 'nvim_lsp' },
     }, {
         { name = 'buffer' },
-    })
+    }),
+    experimental = {
+        native_menu = true,
+        ghost_text = true
+    }
 })
 
 -- Use buffer source for `/`.
 cmp.setup.cmdline('/', {
     sources = {
-        { name = 'buffer' }
+        { name = 'buffer'}
     }
 })
 
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
-        { name = 'path' }
+        { name = 'path'}
     }, {
-        { name = 'cmdline' }
+        { name = 'cmdline'}
     })
 })
 
