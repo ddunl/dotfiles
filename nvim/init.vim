@@ -140,6 +140,11 @@ nnoremap ciq ci"
 nnoremap diq di"
 nnoremap viq vi"
 
+
+j" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 "yank to system clipboard
 vnoremap <leader>y "+y
 "opens gui file explorer at current dir
