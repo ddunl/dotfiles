@@ -141,7 +141,8 @@ nnoremap diq di"
 nnoremap viq vi"
 
 
-j" Use <Tab> and <S-Tab> to navigate through popup menu
+" Completeopt for lsp, use <Tab> and <S-Tab> to navigate through popup menu
+set completeopt=menu,menuone,noselect
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
