@@ -119,7 +119,7 @@ autocmd VimEnter * if !argc() | NERDTree | endif
 "easy exit insert mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
-
+nnoremap Y y$
 "commands for switching windows
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -136,9 +136,11 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>g :Git 
 nnoremap <leader>m :make
 
-nnoremap ciq ci"
-nnoremap diq di"
-nnoremap viq vi"
+"text object for " as q
+xnoremap iq i"
+xnoremap aq a"
+onoremap iq :normal vi"<CR>
+onoremap aq :normal va"<CR>
 
 
 " Completeopt for lsp, use <Tab> and <S-Tab> to navigate through popup menu
