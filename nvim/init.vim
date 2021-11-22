@@ -38,6 +38,11 @@ call plug#begin()
 call plug#end()
 
 
+silent function! OSX()
+    return has('macunix')
+endfunction
+
+
 "gruvbox theme
 syntax on
 
@@ -151,6 +156,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "yank to system clipboard
 vnoremap <leader>y "+y
 "opens gui file explorer at current dir
-nnoremap <leader>o :call system("nohup nautilus . > /dev/null 2>&1 &") <CR>
+if OSX()
+    nnoremap <leader>o :call system("open . &") <CR> 
+else
+    nnoremap <leader>o :call system("nohup nautilus . > /dev/null 2>&1 &") <CR>
+endif
 
 lua require("init")
