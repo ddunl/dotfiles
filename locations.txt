@@ -1,5 +1,4 @@
 ~/.config/nvim/init.vim				nvim/init.vim
-~/.config/nvim/lua/init.lua			nvim/lua/init.lua
 ~/.bashrc							bash/.bashrc
 ~/.tmux.conf						tmux/.tmux.conf
 ~/.config/polybar/config			polybar/config

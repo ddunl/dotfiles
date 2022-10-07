@@ -1,4 +1,13 @@
 {
+  :profiles {
+    :Default {
+      :default true
+      :sim 100
+      :delay 100
+      :alone 100
+      :held 100
+    }
+  }
   :simlayers {
     :space-mode {:key :spacebar}
   } 
