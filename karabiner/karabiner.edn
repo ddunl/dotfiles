@@ -1,0 +1,57 @@
+{
+  :simlayers {
+    :space-mode {:key :spacebar}
+  } 
+
+  :main [
+    {:des "caps -> backspace/ctrl"
+      :rules [
+        [:##caps_lock :left_control nil {:alone :delete_or_backspace}]
+      ]
+    }
+
+    {:des "escape when left shift pressed alone"
+      :rules [
+        [:left_shift :left_shift nil {:alone :escape}]
+        [:right_shift :right_shift nil {:alone :!Shyphen}]
+      ]
+    }
+
+    {:des "space + hjkl are arrows"
+      :rules [
+        :space-mode
+        [:h :left_arrow]
+        [:j :down_arrow]
+        [:k :up_arrow]
+        [:l :right_arrow]
+      ]
+    }
+
+    {:des "change right_shift behavior"
+      :rules [
+        ; Top row
+        [:!Re :!Sopen_bracket]
+        [:!Rr :!Sclose_bracket]
+        [:!Rt :!Sbackslash]
+        ; Middle row
+        [:!Ra :!S3]
+        [:!Rs :!S4]
+        [:!Rd :!S9]
+        [:!Rf :!S0]
+        [:!Rg :grave_accent_and_tilde]
+        [:!Rh :!Sequal_sign]
+        [:!Rj :hyphen]
+        [:!Rk :slash]
+        [:!Rl :!S8]
+        ; Bottom row
+        [:!Rz :!S5]
+        [:!Rx :!S6]
+        [:!Rc :open_bracket]
+        [:!Rv :close_bracket]
+        [:!Rb :!Sgrave_accent_and_tilde]
+        [:!Rn :!S7]
+      ]
+    }
+  ]
+}
+

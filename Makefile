@@ -13,3 +13,5 @@ install:
 	awk '{system("cp "$$2" "$$1)}' $(LOCFILE)
 pull:
 	awk '{system("cp "$$1" "$$2)}' $(LOCFILE)
+diff:
+	awk '{system("echo "$$2"; diff "$$1" "$$2)}' $(LOCFILE)
